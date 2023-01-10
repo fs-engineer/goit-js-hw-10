@@ -45,13 +45,6 @@ const onChangeInput = e => {
   const sanitizedName = e.target.value.toLowerCase().trim();
 
   fetchCountriesByName(sanitizedName)
-    .then(res => {
-      if (!res.ok) {
-        throw new Error(res.status);
-      }
-
-      return res.json();
-    })
     .then(data => {
       return data.map(({ name, capital, population, flags, languages }) => ({
         name: name?.official,
